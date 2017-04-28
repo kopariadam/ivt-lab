@@ -14,6 +14,11 @@ public class GT4500 implements SpaceShip {
     this.primaryTorpedoStore = new TorpedoStore(10);
     this.secondaryTorpedoStore = new TorpedoStore(10);
   }
+  
+  public GT4500(TorpedoStore t1, TorpedoStore t2) {
+	  primaryTorpedoStore=t1;
+	  secondaryTorpedoStore=t2;
+  }
 
   public boolean fireLasers(FiringMode firingMode) {
     // TODO not implemented yet
@@ -78,7 +83,7 @@ public class GT4500 implements SpaceShip {
 
       case ALL:
         // try to fire both of the torpedos
-        firingSuccess = primaryTorpedoStore.fire(1) & secondaryTorpedoStore.fire(1);
+        firingSuccess = primaryTorpedoStore.fire(1) | secondaryTorpedoStore.fire(1);
 
         break;
     }
